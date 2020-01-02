@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-fitbit/precache-manifest.405c2e4edfad3d5282eb185f7f97af5a.js"
+  "/react-fitbit/precache-manifest.2296e2da35643cabd125bfda347387a3.js"
 );
 
 self.addEventListener('message', (event) => {

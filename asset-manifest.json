@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-fitbit/static/css/main.a2b7b0b6.chunk.css",
-    "main.js": "/react-fitbit/static/js/main.eda88aef.chunk.js",
-    "main.js.map": "/react-fitbit/static/js/main.eda88aef.chunk.js.map",
+    "main.js": "/react-fitbit/static/js/main.1634a858.chunk.js",
+    "main.js.map": "/react-fitbit/static/js/main.1634a858.chunk.js.map",
     "runtime-main.js": "/react-fitbit/static/js/runtime-main.88bef846.js",
     "runtime-main.js.map": "/react-fitbit/static/js/runtime-main.88bef846.js.map",
     "static/js/2.a61512a7.chunk.js": "/react-fitbit/static/js/2.a61512a7.chunk.js",
     "static/js/2.a61512a7.chunk.js.map": "/react-fitbit/static/js/2.a61512a7.chunk.js.map",
     "index.html": "/react-fitbit/index.html",
-    "precache-manifest.405c2e4edfad3d5282eb185f7f97af5a.js": "/react-fitbit/precache-manifest.405c2e4edfad3d5282eb185f7f97af5a.js",
+    "precache-manifest.2296e2da35643cabd125bfda347387a3.js": "/react-fitbit/precache-manifest.2296e2da35643cabd125bfda347387a3.js",
     "service-worker.js": "/react-fitbit/service-worker.js",
     "static/css/main.a2b7b0b6.chunk.css.map": "/react-fitbit/static/css/main.a2b7b0b6.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.88bef846.js",
     "static/js/2.a61512a7.chunk.js",
     "static/css/main.a2b7b0b6.chunk.css",
-    "static/js/main.eda88aef.chunk.js"
+    "static/js/main.1634a858.chunk.js"
   ]
 }
