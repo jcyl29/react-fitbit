@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 import Badges from './Badges';
 import dummyData from './dummyData';
 import Friends from './Friends';
 import LifetimeStats from './LifetimeStats';
 import TimeSeriesBarChart from './TimeSeriesBarChart';
+import { authorizeUrl } from './api';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -16,23 +16,21 @@ class Dashboard extends Component {
   fetchFitbitData(url, fitbitToken, stateKey) {
     axios({
       method: 'get',
-      url: 'https://api.fitbit.com/1/user/-/' + url,
+      url: 'https://api.fitbit.com/1.2/user/-/' + url,
       headers: { Authorization: 'Bearer ' + fitbitToken },
       mode: 'cors'
     })
       .then(response => {
-        console.log(response);
-        this.setState({ [stateKey]: response.data });
+        console.log(url, response.data);
+        this.setState({ [stateKey || url]: response.data });
       })
       .catch(error => console.log(error));
   }
 
   componentDidMount() {
     if (window.location.hash) {
-      let fitbitToken = window.location.hash
-        .slice(1)
-        .split('&')[0]
-        .replace('access_token=', '');
+      const urlParams = new URLSearchParams(window.location.hash);
+      const fitbitToken = urlParams.get('#access_token');
 
       this.setState({ loggedIn: true });
 
@@ -49,14 +47,21 @@ class Dashboard extends Component {
         fitbitToken,
         'distance'
       );
-      this.fetchFitbitData('friends/leaderboard.json', fitbitToken, 'friends');
+      this.fetchFitbitData('friends.json', fitbitToken);
+      this.fetchFitbitData('/sleep/date/2019-12-31.json', fitbitToken);
+      this.fetchFitbitData('/sleep/goal.json', fitbitToken);
+      this.fetchFitbitData(
+        '/sleep/date/2019-11-01/2019-12-01.json',
+        fitbitToken
+      );
+      this.fetchFitbitData('/activities/date/2019-12-10.json', fitbitToken);
+      this.fetchFitbitData('devices.json', fitbitToken);
+
+      this.fetchFitbitData('/body/log/fat/date/2019-12-30.json', fitbitToken);
     }
   }
 
   render() {
-    const clientId = '22BBTX';
-    const redirectUri = 'http://localhost:3000/'; // where to redirect after logging in
-
     return (
       <div className="container">
         <header className="text-center">
@@ -67,11 +72,7 @@ class Dashboard extends Component {
 
         {!this.state.loggedIn && (
           <div className="row text-center">
-            <a
-              href={`https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800`}
-            >
-              Log in with fitbit
-            </a>
+            <a href={authorizeUrl}>Log in with fitbit</a>
           </div>
         )}
 
